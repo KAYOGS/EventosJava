@@ -1,11 +1,10 @@
-import helper_classes.*;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class Eventos extends JFrame {
 
-    private Inicio telaInicio; // Referência pra tela Inicio
+    private Inicio telaInicio; // Referência pra tela Inicio (assumindo que Inicio existe)
 
     // Construtor ajustado pra receber a tela Inicio
     public Eventos(Inicio telaInicio) {
@@ -27,7 +26,7 @@ public class Eventos extends JFrame {
     private JPanel criarPainelPrincipal() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#3C3F41"));
+        panel.setBackground(new Color(60, 63, 65)); // #3C3F41
 
         adicionarCabecalho(panel);
         adicionarTabela(panel);
@@ -38,16 +37,26 @@ public class Eventos extends JFrame {
     }
 
     private void adicionarCabecalho(JPanel panel) {
-        JLabel titulo = criarEtiqueta("Eventos", 48, 38, 106, 22, 18, "#D9D9D9");
+        JLabel titulo = new JLabel("Eventos");
+        titulo.setBounds(48, 38, 106, 22);
+        titulo.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(titulo);
 
-        JLabel etiquetaPalestrante = criarEtiqueta("Palestrante:", 370, 37, 82, 17, 14, "#D9D9D9");
+        JLabel etiquetaPalestrante = new JLabel("Palestrante:");
+        etiquetaPalestrante.setBounds(370, 37, 82, 17);
+        etiquetaPalestrante.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(etiquetaPalestrante);
 
-        JTextField campoPalestrante = criarCampoTexto("", 460, 35, 275, 21, "Palestrante");
+        JTextField campoPalestrante = new JTextField();
+        campoPalestrante.setBounds(460, 35, 275, 21);
+        campoPalestrante.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        campoPalestrante.setForeground(new Color(101, 101, 101)); // #656565
         panel.add(campoPalestrante);
 
-        JButton botaoVisualizar = criarBotao("Visualizar", 180, 370, 106, 28);
+        JButton botaoVisualizar = new JButton("Visualizar");
+        botaoVisualizar.setBounds(180, 370, 106, 28);
+        botaoVisualizar.setBackground(new Color(46, 46, 46)); // #2e2e2e
+        botaoVisualizar.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(botaoVisualizar);
     }
 
@@ -55,12 +64,9 @@ public class Eventos extends JFrame {
         String[] colunas = {"Nome", "Data", "Local", "Descrição", "Palestrante"};
         DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
         JTable tabela = new JTable(modelo);
-        tabela.setFont(CustomFontLoader.loadFont("./resources/fonts/Lato.ttf", 12));
-        tabela.setBackground(Color.decode("#B2B2B2"));
-        tabela.setForeground(Color.decode("#353535"));
+        tabela.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        tabela.setForeground(new Color(53, 53, 53)); // #353535
         tabela.setRowHeight(25);
-        tabela.setBorder(new RoundedBorder(2, Color.decode("#979797"), 0));
-        tabela.setShowGrid(false);
 
         tabela.getColumnModel().getColumn(0).setPreferredWidth(150);
         tabela.getColumnModel().getColumn(1).setPreferredWidth(80);
@@ -70,49 +76,79 @@ public class Eventos extends JFrame {
 
         JScrollPane scrollPane = new JScrollPane(tabela);
         scrollPane.setBounds(50, 80, 685, 270);
-        scrollPane.setBorder(new RoundedBorder(2, Color.decode("#979797"), 0));
-        scrollPane.getViewport().setBackground(Color.decode("#B2B2B2"));
+        scrollPane.getViewport().setBackground(new Color(178, 178, 178)); // #B2B2B2
         panel.add(scrollPane);
     }
 
     private void adicionarCamposDeEntrada(JPanel panel) {
-        JLabel etiquetaDescricao = criarEtiqueta("Descrição", 51, 425, 106, 17, 14, "#D9D9D9");
+        JLabel etiquetaDescricao = new JLabel("Descrição");
+        etiquetaDescricao.setBounds(51, 425, 106, 17);
+        etiquetaDescricao.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(etiquetaDescricao);
 
-        JTextArea areaDescricao = criarAreaTexto("", 52, 450, 335, 60, "Descrição");
+        JTextArea areaDescricao = new JTextArea();
+        areaDescricao.setBounds(52, 450, 335, 60);
+        areaDescricao.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        areaDescricao.setForeground(new Color(101, 101, 101)); // #656565
         panel.add(areaDescricao);
 
-        JLabel etiquetaNome = criarEtiqueta("Nome:", 392, 452, 45, 17, 14, "#D9D9D9");
+        JLabel etiquetaNome = new JLabel("Nome:");
+        etiquetaNome.setBounds(392, 452, 45, 17);
+        etiquetaNome.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(etiquetaNome);
 
-        JTextField campoNome = criarCampoTexto("", 440, 450, 292, 21, "Nome");
+        JTextField campoNome = new JTextField();
+        campoNome.setBounds(440, 450, 292, 21);
+        campoNome.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        campoNome.setForeground(new Color(101, 101, 101)); // #656565
         panel.add(campoNome);
 
-        JLabel etiquetaData = criarEtiqueta("Data:", 400, 491, 40, 17, 14, "#D9D9D9");
+        JLabel etiquetaData = new JLabel("Data:");
+        etiquetaData.setBounds(400, 491, 40, 17);
+        etiquetaData.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(etiquetaData);
 
-        JTextField campoData = criarCampoTexto("", 440, 489, 100, 21, "Data");
+        JTextField campoData = new JTextField();
+        campoData.setBounds(440, 489, 100, 21);
+        campoData.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        campoData.setForeground(new Color(101, 101, 101)); // #656565
         panel.add(campoData);
 
-        JLabel etiquetaLocal = criarEtiqueta("Local:", 548, 491, 43, 17, 14, "#D9D9D9");
+        JLabel etiquetaLocal = new JLabel("Local:");
+        etiquetaLocal.setBounds(548, 491, 43, 17);
+        etiquetaLocal.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(etiquetaLocal);
 
-        JTextField campoLocal = criarCampoTexto("", 592, 489, 140, 21, "Local");
+        JTextField campoLocal = new JTextField();
+        campoLocal.setBounds(592, 489, 140, 21);
+        campoLocal.setBackground(new Color(178, 178, 178)); // #B2B2B2
+        campoLocal.setForeground(new Color(101, 101, 101)); // #656565
         panel.add(campoLocal);
     }
 
     private void adicionarBotoesDeAcao(JPanel panel) {
-        JButton botaoCadastrar = criarBotao("Cadastrar", 294, 370, 106, 28);
+        JButton botaoCadastrar = new JButton("Cadastrar");
+        botaoCadastrar.setBounds(294, 370, 106, 28);
+        botaoCadastrar.setBackground(new Color(46, 46, 46)); // #2e2e2e
+        botaoCadastrar.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(botaoCadastrar);
 
-        JButton botaoAtualizar = criarBotao("Atualizar", 407, 370, 106, 28);
+        JButton botaoAtualizar = new JButton("Atualizar");
+        botaoAtualizar.setBounds(407, 370, 106, 28);
+        botaoAtualizar.setBackground(new Color(46, 46, 46)); // #2e2e2e
+        botaoAtualizar.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(botaoAtualizar);
 
-        JButton botaoCancelar = criarBotao("Cancelar", 520, 370, 106, 28);
+        JButton botaoCancelar = new JButton("Apagar");
+        botaoCancelar.setBounds(520, 370, 106, 28);
+        botaoCancelar.setBackground(new Color(46, 46, 46)); // #2e2e2e
+        botaoCancelar.setForeground(new Color(217, 217, 217)); // #D9D9D9
         panel.add(botaoCancelar);
 
-        // Botão Voltar ajustado
-        JButton botaoVoltar = criarBotao("Voltar", 633, 370, 103, 28);
+        JButton botaoVoltar = new JButton("Voltar");
+        botaoVoltar.setBounds(633, 370, 103, 28);
+        botaoVoltar.setBackground(new Color(46, 46, 46)); // #2e2e2e
+        botaoVoltar.setForeground(new Color(217, 217, 217)); // #D9D9D9
         botaoVoltar.addActionListener(e -> {
             setVisible(false); // Esconde a tela Eventos
             telaInicio.setVisible(true); // Reabre a tela Inicio original
@@ -120,50 +156,17 @@ public class Eventos extends JFrame {
         panel.add(botaoVoltar);
     }
 
-    private JLabel criarEtiqueta(String texto, int x, int y, int largura, int altura, int tamanhoFonte, String cor) {
-        JLabel etiqueta = new JLabel(texto);
-        etiqueta.setBounds(x, y, largura, altura);
-        etiqueta.setFont(CustomFontLoader.loadFont("./resources/fonts/Lato.ttf", tamanhoFonte));
-        etiqueta.setForeground(Color.decode(cor));
-        return etiqueta;
-    }
-
-    private JTextField criarCampoTexto(String texto, int x, int y, int largura, int altura, String placeholder) {
-        JTextField campo = new JTextField(texto);
-        campo.setBounds(x, y, largura, altura);
-        campo.setFont(CustomFontLoader.loadFont("./resources/fonts/Lato.ttf", 14));
-        campo.setBackground(Color.decode("#B2B2B2"));
-        campo.setForeground(Color.decode("#656565"));
-        campo.setBorder(new RoundedBorder(2, Color.decode("#979797"), 0));
-        OnFocusEventHelper.setOnFocusText(campo, placeholder, Color.decode("#353535"), Color.decode("#656565"));
-        return campo;
-    }
-
-    private JTextArea criarAreaTexto(String texto, int x, int y, int largura, int altura, String placeholder) {
-        JTextArea area = new JTextArea(texto);
-        area.setBounds(x, y, largura, altura);
-        area.setFont(CustomFontLoader.loadFont("./resources/fonts/Lato.ttf", 14));
-        area.setBackground(Color.decode("#B2B2B2"));
-        area.setForeground(Color.decode("#656565"));
-        area.setBorder(new RoundedBorder(2, Color.decode("#979797"), 0));
-        OnFocusEventHelper.setOnFocusText(area, placeholder, Color.decode("#353535"), Color.decode("#656565"));
-        return area;
-    }
-
-    private JButton criarBotao(String texto, int x, int y, int largura, int altura) {
-        JButton botao = new JButton(texto);
-        botao.setBounds(x, y, largura, altura);
-        botao.setBackground(Color.decode("#2e2e2e"));
-        botao.setForeground(Color.decode("#D9D9D9"));
-        botao.setFont(CustomFontLoader.loadFont("./resources/fonts/Lato.ttf", 14));
-        botao.setBorder(new RoundedBorder(4, Color.decode("#979797"), 1));
-        botao.setFocusPainted(false);
-        OnClickEventHelper.setOnClickColor(botao, Color.decode("#232323"), Color.decode("#2e2e2e"));
-        return botao;
-    }
-
     @Override
     public void setVisible(boolean visivel) {
         super.setVisible(visivel);
+    }
+
+    // Método main para testar
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Inicio inicio = new Inicio(); // Assumindo que Inicio existe
+            Eventos eventos = new Eventos(inicio);
+            eventos.setVisible(true);
+        });
     }
 }

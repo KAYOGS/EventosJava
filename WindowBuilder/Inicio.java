@@ -1,4 +1,3 @@
-import helper_classes.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,19 +27,26 @@ public class Inicio extends JFrame {
     private JPanel criarPainelPrincipal() {
         JPanel panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.decode("#eeeeee"));
+        panel.setBackground(new Color(238, 238, 238)); // #eeeeee
         return panel;
     }
 
     // Adiciona os componentes ao painel
     private void adicionarComponentesAoPainel(JPanel panel) {
-        JLabel rotuloHome = criarRotulo("Inicio", 55, 42, 106, 23, 19);
+        JLabel rotuloHome = new JLabel("Inicio");
+        rotuloHome.setBounds(55, 42, 106, 23);
+        rotuloHome.setForeground(new Color(27, 27, 27)); // #1b1b1b
         panel.add(rotuloHome);
 
-        JLabel rotuloEventos = criarRotulo("Eventos", 370, 94, 62, 17, 14);
+        JLabel rotuloEventos = new JLabel("Eventos");
+        rotuloEventos.setBounds(370, 94, 62, 17);
+        rotuloEventos.setForeground(new Color(27, 27, 27)); // #1b1b1b
         panel.add(rotuloEventos);
 
-        JButton botaoEventos = criarBotao("Eventos", 345, 123, 106, 28);
+        JButton botaoEventos = new JButton("Eventos");
+        botaoEventos.setBounds(345, 123, 106, 28);
+        botaoEventos.setBackground(new Color(255, 255, 255)); // #ffffff
+        botaoEventos.setForeground(new Color(27, 27, 27)); // #1b1b1b
         botaoEventos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,10 +57,15 @@ public class Inicio extends JFrame {
         });
         panel.add(botaoEventos);
 
-        JLabel rotuloPalestrante = criarRotulo("Palestrante", 370, 199, 85, 17, 14);
+        JLabel rotuloPalestrante = new JLabel("Palestrante");
+        rotuloPalestrante.setBounds(370, 199, 85, 17);
+        rotuloPalestrante.setForeground(new Color(27, 27, 27)); // #1b1b1b
         panel.add(rotuloPalestrante);
 
-        JButton botaoPalestrante = criarBotao("Palestrante", 350, 229, 106, 28);
+        JButton botaoPalestrante = new JButton("Palestrante");
+        botaoPalestrante.setBounds(350, 229, 106, 28);
+        botaoPalestrante.setBackground(new Color(255, 255, 255)); // #ffffff
+        botaoPalestrante.setForeground(new Color(27, 27, 27)); // #1b1b1b
         botaoPalestrante.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,10 +76,15 @@ public class Inicio extends JFrame {
         });
         panel.add(botaoPalestrante);
 
-        JLabel rotuloParticipante = criarRotulo("Participante", 370, 312, 106, 17, 14);
+        JLabel rotuloParticipante = new JLabel("Participante");
+        rotuloParticipante.setBounds(370, 312, 106, 17);
+        rotuloParticipante.setForeground(new Color(27, 27, 27)); // #1b1b1b
         panel.add(rotuloParticipante);
 
-        JButton botaoParticipante = criarBotao("Participante", 350, 337, 106, 28);
+        JButton botaoParticipante = new JButton("Participante");
+        botaoParticipante.setBounds(350, 337, 106, 28);
+        botaoParticipante.setBackground(new Color(255, 255, 255)); // #ffffff
+        botaoParticipante.setForeground(new Color(27, 27, 27)); // #1b1b1b
         botaoParticipante.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,28 +94,6 @@ public class Inicio extends JFrame {
             }
         });
         panel.add(botaoParticipante);
-    }
-
-    // Método pra criar rótulos
-    private JLabel criarRotulo(String texto, int x, int y, int largura, int altura, int tamanhoFonte) {
-        JLabel rotulo = new JLabel(texto);
-        rotulo.setBounds(x, y, largura, altura);
-        rotulo.setFont(CustomFontLoader.loadFont("./resources/fonts/Lexend.ttf", tamanhoFonte));
-        rotulo.setForeground(Color.decode("#1b1b1b"));
-        return rotulo;
-    }
-
-    // Método pra criar botões
-    private JButton criarBotao(String texto, int x, int y, int largura, int altura) {
-        JButton botao = new JButton(texto);
-        botao.setBounds(x, y, largura, altura);
-        botao.setBackground(Color.decode("#ffffff"));
-        botao.setForeground(Color.decode("#1b1b1b"));
-        botao.setFont(CustomFontLoader.loadFont("./resources/fonts/Lexend.ttf", 14));
-        botao.setBorder(new RoundedBorder(4, Color.decode("#626262"), 1));
-        botao.setFocusPainted(false);
-        OnClickEventHelper.setOnClickColor(botao, Color.decode("#c2c2c2"), Color.decode("#ffffff"));
-        return botao;
     }
 
     // Main pra iniciar o programa
